@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+	"icons": {"512": "icon/chef.png"},
+    "name": "甲奔皇帝大",
+    "description": "甲奔皇帝大",
+    "version": "1.4.1",
+    "browser_action":
+    {
+        "default_icon": "icon/chef.png",
+        "default_popup": "html/popup.html"
+    },
+	"background" : {
+        "scripts" : ["js/alarm_dinbendon.js"],
+        "persistent" : true
+    },
+	"permissions" : [
+		"alarms",
+		"notifications",
+		"storage"
+    ]
+}
