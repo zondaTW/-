@@ -5,13 +5,13 @@
 
 ## 畫面
 #### 瀏覽器的icon
-![picture](picture/icon.jpg)  
+![picture](picture/icon.JPG)  
 #### 設定畫面
-![picture](picture/setting.jpg)
+![picture](picture/setting.JPG)
 #### 訂便當通知(點擊通知可以打開設定好的網頁)
-![picture](picture/dinbendon_notification.jpg)
+![picture](picture/dinbendon_notification.JPG)
 #### 拿點心通知  
-![picture](picture/dessert_notification.jpg)
+![picture](picture/dessert_notification.JPG)
 
 ## 未來
 將設定畫面弄好看點
