@@ -3,7 +3,7 @@
 	"icons": {"512": "icon/chef.png"},
     "name": "甲奔皇帝大",
     "description": "甲奔皇帝大",
-    "version": "1.4.1",
+    "version": "1.5.1",
     "browser_action":
     {
         "default_icon": "icon/chef.png",

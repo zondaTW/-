@@ -1,9 +1,11 @@
 var whenToRing = {
 	"dinbendon_time": new Date().setHours(10, 10, 00),
+	"dinner_time": new Date().setHours(12, 00, 00),
 	"dessert_time": new Date().setHours(15, 10, 00)
 };
 var dinbendon_url = "https://dinbendon.net/do/";
 var dinbendon_icon = "../icon/menu.png";
+var dinner_icon = "../icon/rice.png"
 var dessert_icon = "../icon/creme-caramel.png";
 
 function create_alarm() {
@@ -16,6 +18,13 @@ function create_alarm() {
 			{when: whenToRing.dinbendon_time}
 		);
 		console.log("DinBenDonAlarm Create~~~");
+	}
+	else if (now_time < whenToRing.dinner_time){
+		chrome.alarms.create(
+			"DinnerAlarm", 
+			{when: whenToRing.dinner_time}
+		);
+		console.log("DinnerAlarm Create~~~");
 	}
 	else if (now_time < whenToRing.dessert_time) {
 		chrome.alarms.create(
@@ -61,6 +70,10 @@ function getTime() {
 		{
 			"name": "dinbendon_time",
 			"default_time": new Date().setHours(10, 10, 00)
+		},
+		{
+			"name": "dinner_time",
+			"default_time": new Date().setHours(12, 00, 00)
 		},
 		{
 			"name": "dessert_time",
@@ -133,6 +146,12 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 			chrome.tabs.create({url: dinbendon_url});
 		}
 	}
+	else if (alarm.name == "DinnerAlarm") {
+		notify = new Notification("甲奔皇帝大", {
+			body: "領便當瞜~~~~~",
+			icon: dinner_icon
+		});
+	}
 	else if (alarm.name == "DessertAlarm") {
 		notify = new Notification("甲奔皇帝大", {
 			body: "拿點心瞜~~~~~",
@@ -151,6 +170,10 @@ chrome.runtime.onMessage.addListener(
 				.setHours(
 					request.Value.dinbendon_time[0], 
 					request.Value.dinbendon_time[1], 0);
+			whenToRing.dinner_time = new Date()
+				.setHours(
+					request.Value.dinner_time[0], 
+					request.Value.dinner_time[1], 0);
 			whenToRing.dessert_time = new Date()
 				.setHours(
 					request.Value.dessert_time[0], 
