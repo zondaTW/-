@@ -10,6 +10,8 @@
 ![picture](picture/setting.JPG)
 #### 訂便當通知(點擊通知可以打開設定好的網頁)
 ![picture](picture/dinbendon_notification.JPG)
+#### 領便當通知  
+![picture](picture/dinner_notification.JPG)
 #### 拿點心通知  
 ![picture](picture/dessert_notification.JPG)
 
