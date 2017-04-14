@@ -15,8 +15,5 @@
 #### 拿點心通知  
 ![picture](picture/dessert_notification.JPG)
 
-## 未來
-將設定畫面弄好看點
-
 ## 引用
 圖片來源：<http://www.flaticon.com/packs/food-and-drinks-16>
