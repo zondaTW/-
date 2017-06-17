@@ -151,6 +151,10 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 			body: "領便當瞜~~~~~",
 			icon: dinner_icon
 		});
+		
+		notify.onclick = function() {
+			chrome.tabs.create({url: dinbendon_url});
+		}
 	}
 	else if (alarm.name == "DessertAlarm") {
 		notify = new Notification("甲奔皇帝大", {
