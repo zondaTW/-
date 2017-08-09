@@ -1,9 +1,9 @@
 body .page-header{
 	text-align: center;
-  	font-family: Microsoft JhengHei;
-	line-height: 5px;
-	width: 175px;
-	height: 90px;
+	font-family: Microsoft JhengHei;
+	line-height:5px;
+	width:175px;
+	height:90px;
 	margin: 10px auto;
 }
 
@@ -13,5 +13,5 @@ body .page-header img{
 }
 
 body .page-footer span{
-	width: 175px;
+	width:175px;
 }

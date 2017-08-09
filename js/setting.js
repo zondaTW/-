@@ -1,7 +1,7 @@
 
 var default_value = {
 	"dinbendon_time": ["10", "10"],
-	"dinner_time": ["12", "00"],
+	"lunch_time": ["12", "00"],
 	"dessert_time": ["15", "10"],
 	"dinbendon_url": "https://dinbendon.net/do/"
 }
@@ -14,15 +14,15 @@ function setAlarm() {
 
 function setTime() {
 	let dinbendon_time = document.getElementById("dinbendon_time").value.split(":");
-	let dinner_time = document.getElementById("dinner_time").value.split(":");
+	let lunch_time = document.getElementById("lunch_time").value.split(":");
 	let dessert_time = document.getElementById("dessert_time").value.split(":");
 	let dinbendon_url = document.getElementById("dinbendon_url").value;
 	
 	if (dinbendon_time.length == 1 && dinbendon_time[0] == "") {
 		dinbendon_time = default_value.dinbendon_time;
 	}
-	if (dinner_time.length == 1 && dinner_time[0] == "") {
-		dinner_time = default_value.dinner_time;
+	if (lunch_time.length == 1 && lunch_time[0] == "") {
+		lunch_time = default_value.lunch_time;
 	}
 	if (dessert_time.length == 1 && dessert_time[0] == "") {
 		dessert_time = default_value.dessert_time;
@@ -34,8 +34,8 @@ function setTime() {
 	chrome.storage.sync.set({
 		"dinbendon_time": {"hours" : dinbendon_time[0], 
 						   "minute": dinbendon_time[1]},
-		"dinner_time":    {"hours" : dinner_time[0], 
-						   "minute": dinner_time[1]},
+		"lunch_time":    {"hours" : lunch_time[0], 
+						   "minute": lunch_time[1]},
 		"dessert_time":   {"hours" : dessert_time[0], 
 						   "minute": dessert_time[1]},
 		"dinbendon_url": dinbendon_url
@@ -49,7 +49,7 @@ function setTime() {
 		"Status": "Set",
 		"Value": {
 			'dinbendon_time': dinbendon_time,
-			'dinner_time': dinner_time,
+			'lunch_time': lunch_time,
 			'dessert_time': dessert_time,
 			"dinbendon_url": dinbendon_url
 		}
@@ -83,7 +83,7 @@ function getTime() {
 			"default_time": "10:10:00"
 		},
 		{
-			"name": "dinner_time",
+			"name": "lunch_time",
 			"default_time": "12:00:00"
 		},
 		{

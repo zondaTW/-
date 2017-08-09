@@ -1,30 +1,31 @@
 var whenToRing = {
 	"dinbendon_time": new Date().setHours(10, 10, 00),
-	"dinner_time": new Date().setHours(12, 00, 00),
+	"lunch_time": new Date().setHours(12, 00, 00),
 	"dessert_time": new Date().setHours(15, 10, 00)
 };
 var dinbendon_url = "https://dinbendon.net/do/";
 var dinbendon_icon = "../icon/menu.png";
-var dinner_icon = "../icon/rice.png"
+var lunch_icon = "../icon/rice.png"
 var dessert_icon = "../icon/creme-caramel.png";
+var day_seconds = 86400000;
 
 function create_alarm() {
 	chrome.alarms.clearAll();
 	
 	let now_time = new Date().getTime();
-	if (now_time <= whenToRing.dinbendon_time) {
+	if (now_time < whenToRing.dinbendon_time) {
 		chrome.alarms.create(
 			"DinBenDonAlarm", 
 			{when: whenToRing.dinbendon_time}
 		);
 		console.log("DinBenDonAlarm Create~~~");
 	}
-	else if (now_time < whenToRing.dinner_time){
+	else if (now_time < whenToRing.lunch_time){
 		chrome.alarms.create(
-			"DinnerAlarm", 
-			{when: whenToRing.dinner_time}
+			"LunchAlarm", 
+			{when: whenToRing.lunch_time}
 		);
-		console.log("DinnerAlarm Create~~~");
+		console.log("LunchAlarm Create~~~");
 	}
 	else if (now_time < whenToRing.dessert_time) {
 		chrome.alarms.create(
@@ -32,6 +33,12 @@ function create_alarm() {
 			{when: whenToRing.dessert_time}
 		);
 		console.log("DessertAlarm Create~~~");
+	}
+	else {
+		whenToRing.dinbendon_time += day_seconds;
+		whenToRing.lunch_time += day_seconds;
+		whenToRing.dessert_time += day_seconds;
+		create_alarm();
 	}
 }
 
@@ -72,7 +79,7 @@ function getTime() {
 			"default_time": new Date().setHours(10, 10, 00)
 		},
 		{
-			"name": "dinner_time",
+			"name": "lunch_time",
 			"default_time": new Date().setHours(12, 00, 00)
 		},
 		{
@@ -146,10 +153,10 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 			chrome.tabs.create({url: dinbendon_url});
 		}
 	}
-	else if (alarm.name == "DinnerAlarm") {
+	else if (alarm.name == "LunchAlarm") {
 		notify = new Notification("甲奔皇帝大", {
 			body: "領便當瞜~~~~~",
-			icon: dinner_icon
+			icon: lunch_icon
 		});
 		
 		notify.onclick = function() {
@@ -174,10 +181,10 @@ chrome.runtime.onMessage.addListener(
 				.setHours(
 					request.Value.dinbendon_time[0], 
 					request.Value.dinbendon_time[1], 0);
-			whenToRing.dinner_time = new Date()
+			whenToRing.lunch_time = new Date()
 				.setHours(
-					request.Value.dinner_time[0], 
-					request.Value.dinner_time[1], 0);
+					request.Value.lunch_time[0], 
+					request.Value.lunch_time[1], 0);
 			whenToRing.dessert_time = new Date()
 				.setHours(
 					request.Value.dessert_time[0], 
