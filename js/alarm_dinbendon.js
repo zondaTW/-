@@ -92,11 +92,9 @@ function getTime() {
 
 
 function getURL() {
-	let url;
 	chrome.storage.sync.get(
 		"dinbendon_url", 
 		function(items) {
-			let time_format;
 			if (items.dinbendon_url != undefined) {
 				dinbendon_url = items.dinbendon_url;
 			}
